@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  --primary: #7c3aed;
+  --radius: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.8), 0 0 100px rgba(139, 92, 246, 0.4); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sign-in {
+  from { opacity: 0; transform: scale(0.8) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-spin-reverse { animation: spin-reverse 6s linear infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-sign-in { animation: sign-in 0.5s ease-out forwards; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #7c3aed, #a855f7, #c084fc, #7c3aed);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 50%, #c026d3 100%);
+}
+
+.sign-card-active {
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5), 0 20px 60px rgba(139, 92, 246, 0.3);
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 999px;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+}
+
+/* lucide icon sizing default */
+[data-lucide] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Targeted mobile safeguards: preserve the original layout, but prevent controls
+   and camera content from overflowing on narrow phone screens. */
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  #app,
+  #app main,
+  #app section {
+    min-width: 0;
+  }
+
+  #app header {
+    gap: 0.6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #app header > div:last-child {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  #app textarea {
+    min-width: 0;
+  }
+
+  #app canvas {
+    max-width: 100%;
+  }
+
+  #app [id="camera-toggle"],
+  #app [id="camera-clear"],
+  #app [id="camera-speak"] {
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
